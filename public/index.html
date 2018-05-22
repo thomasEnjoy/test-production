@@ -20,6 +20,23 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+ <script
+      dangerouslySetInnerHTML={{
+        __html: `
+          if (window.process && window.process.env && typeof window.process.env  === 'object') {
+            window.process.env = Object.assign({}, window.process.env, ${JSON.stringify(
+              process.env
+            )});
+          } else if (window.process && typeof window.process  === 'object') {
+            window.process.env = ${JSON.stringify(process.env)}
+          } else {
+            window.process = {
+              env: ${JSON.stringify(process.env)}
+            }
+          }
+        `,
+      }}
+    />
   </head>
   <body>
     <noscript>
