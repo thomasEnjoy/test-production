@@ -4,6 +4,8 @@ import './App.css';
 
 class App extends Component {
   render() {
+      console.log(`env: ${process.env.NODE_ENV});
+      console.log(`env: ${process.env.NODE_ENV} ${process.env.thomas}`);
     return (
       <div className="App">
         <header className="App-header">
@@ -12,7 +14,6 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-	      {{process.env.thomas}}
         </p>
       </div>
     );
