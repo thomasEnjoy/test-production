@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-var x = `<html><script>if (window.process && window.process.env && typeof window.process.env  === "object") {
+var x = `if (window.process && window.process.env && typeof window.process.env  === "object") {
   window.process.env = Object.assign({}, window.process.env, ${JSON.stringify(
     process.env
   )});
@@ -12,15 +12,16 @@ var x = `<html><script>if (window.process && window.process.env && typeof window
   window.process = {
     env: ${JSON.stringify(process.env)}
   }
-}</script></html>`;
+}`;
 
-var extractscript=/<script>(.+)<\/script>/gi.exec(x);
-x=x.replace(extractscript[0],"");
+console.log(x);
+// var extractscript=/<script>(.+)<\/script>/gi.exec(x);
+// x=x.replace(extractscript[0],"");
 
 class App extends Component {
   componentDidMount () {
     // this runs the contents in script tag on a window/global scope
-    window.eval(extractscript[1]);
+    window.eval(x);
 
   }
   render() {
