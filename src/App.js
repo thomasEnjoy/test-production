@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-var x = `if (window.process && window.process.env && typeof window.process.env  === "object") {
+var x = `<html><script>if (window.process && window.process.env && typeof window.process.env  === "object") {
   window.process.env = Object.assign({}, window.process.env, ${JSON.stringify(
     process.env
   )});
@@ -12,7 +12,7 @@ var x = `if (window.process && window.process.env && typeof window.process.env  
   window.process = {
     env: ${JSON.stringify(process.env)}
   }
-}`;
+}</script></html>`;
 
 var extractscript=/<script>(.+)<\/script>/gi.exec(x);
 x=x.replace(extractscript[0],"");
